@@ -6,15 +6,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SMS</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
     <nav>
+        {% if user.is_authenticated %}
         <ul>
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'stock:list' %}">List</a></li>
             <li><a href="{% url 'stock:add' %}">Add</a></li>
         </ul>
+
+        <ul>
+            <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+        {% else %}
+            <li><a href="{% url 'accounts:login' %}">Login</a></li>
+            <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
+        </ul>
+        {% endif %}
     </nav>
     {% block content %}
     {% endblock%}

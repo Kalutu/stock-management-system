@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from .forms import *
 
 # Create your views here.
+def home(request):
+    return render(request, 'stock/home.html')
+
 def list_items(request):
     form = Stock.objects.all()
     return render(request, 'stock/list.html', {'form':form})

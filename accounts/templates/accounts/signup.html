@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
     <h1>Sign Up</h1>
     
     <form class="site-form" action="/accounts/signup/" method="post">
@@ -5,3 +9,5 @@
         {{ form }}
         <input type="submit" value="Signup">
     </form>
+
+{% endblock %}

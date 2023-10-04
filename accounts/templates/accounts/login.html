@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
     <h1>Log in</h1>
 
     <form class="site-form" action="/accounts/login/" method="post">
@@ -9,3 +13,5 @@
         {% endif %}
         <input type="submit" value="Login">
     </form>
+
+    {% endblock %}
