@@ -1,19 +1,41 @@
 {% extends 'base.html' %}
-
+{% load bootstrap5 %}
 {% block content %}
-	<table class="m-5">
-		<thead>
-			<th>Item</th>
-			<th>Quantity</th>
-		</thead>
-		<tbody>
-			{% for instance in form %}
-			<tr>
-				<td>{{instance.item_name}}</td>
-				<td>{{instance.quantity}}</td>
-			</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+
+	<div class="container">
+		<form class="mt-5" method="post" action="">
+			{% csrf_token %}
+			<div class="row">
+				{% for field in form %}
+				<div class="col-sm-5">
+					{% bootstrap_field field %}
+				</div>
+				{% endfor %}
+				<div class="col-sm-2">
+					<input class="btn btn-success mt-4" type="submit" value="Search">
+				</div>
+			</div> 
+		</form>
+
+		<table class="m-5">
+			<thead>
+				<th></th>
+				<th>Category</th>
+				<th>Item</th>
+				<th>Quantity</th>
+			</thead>
+			<tbody>
+				{% for instance in queryset %}
+				<tr>
+					<td>{{forloop.counter}}</td>
+					<td>{{instance.category}}</td>
+					<td>{{instance.item_name}}</td>
+					<td>{{instance.quantity}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	
 
 {% endblock %}
