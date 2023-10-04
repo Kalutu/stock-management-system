@@ -18,7 +18,10 @@
         </ul>
 
         <ul>
-            <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+            <form method="post" action="{% url 'accounts:logout' %}">
+                {% csrf_token %}
+                <input type="submit" value="Logout">
+            </form>
         {% else %}
             <li><a href="{% url 'accounts:login' %}">Login</a></li>
             <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
