@@ -1,11 +1,22 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SMS</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Home Page</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'stock:list' %}">List</a></li>
+            <li><a href="{% url 'stock:add' %}">Add</a></li>
+        </ul>
+    </nav>
+    {% block content %}
+    {% endblock%}
 </body>
 </html>
