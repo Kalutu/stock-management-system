@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-	{{title}}<br>
-	{% for instance in form %}
-	{{instance.item_name}}, {{instance.quantity}}<br>
-
-	{% endfor %}
+	<table class="m-5">
+		<thead>
+			<th>Item</th>
+			<th>Quantity</th>
+		</thead>
+		<tbody>
+			{% for instance in form %}
+			<tr>
+				<td>{{instance.item_name}}</td>
+				<td>{{instance.quantity}}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
 {% endblock %}

@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
-
+{% load bootstrap5 %}
 {% block content %}
 
-    <h1>Sign Up</h1>
+    <div class="container">
+        <h1 class="mt-5 mb-5">Sign Up</h1>
     
-    <form class="site-form" action="/accounts/signup/" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Signup">
-    </form>
+        <form action="/accounts/signup/" method="post">
+            {% csrf_token %}
+            <div class="row">
+                {% for field in form %}
+                <div class="col-sm-7">
+                    {% bootstrap_field field %}
+                </div>
+                {% endfor %}
+            </div>
+            <input class="btn btn-success" type="submit" value="Signup">
+        </form>
+    </div>
+    
 
 {% endblock %}
