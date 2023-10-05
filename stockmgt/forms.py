@@ -24,7 +24,7 @@ class StockCreateForm(forms.ModelForm):
 class StockSearchForm(forms.ModelForm):
    class Meta:
      model = Stock
-     fields = ['category', 'item_name']
+     fields = ['category', 'item_name', 'export_to_CSV']
 
 class CategoryForm(forms.ModelForm):
     class Meta:

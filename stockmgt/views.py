@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.http import HttpResponse
+import csv
 
 # Create your views here.
 def home(request):
@@ -19,14 +21,25 @@ def list_items(request):
         form = StockSearchForm(request.POST)
         if form.is_valid():
             queryset = Stock.objects.filter(
-                category__icontains=form['category'].value(),
-                item_name__icontains=form['item_name'].value()
-				)
+                    category__name__icontains=form['category'].value(),
+                    item_name__icontains=form['item_name'].value()
+                )
+            
             context={
                     'queryset':queryset,
                     'form':form
             }
-            
+
+            if form['export_to_CSV'].value() == True:
+                response = HttpResponse(content_type='text/csv')
+                response['Content-Disposition'] = 'attachment; filename="Stocklist.csv"'
+                writer = csv.writer(response)
+                writer.writerow(['CATEGORY', 'ITEM NAME', 'QUANTITY'])
+                instance = queryset
+                for stock in instance:
+                    writer.writerow([stock.category, stock.item_name, stock.quantity])
+                return response
+       
     return render(request, 'stock/list.html', context)
 
 @login_required(login_url=('/accounts/login'))
