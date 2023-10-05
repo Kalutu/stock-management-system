@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Stock
+from .models import *
 from .forms import StockCreateForm
 
 # Register your models here.
@@ -11,3 +11,4 @@ class StockCreateAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Stock, StockCreateAdmin)
+admin.site.register(Category)

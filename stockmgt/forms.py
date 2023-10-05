@@ -1,5 +1,5 @@
 from django import forms
-from .models import Stock
+from .models import *
 
 class StockCreateForm(forms.ModelForm):
     class Meta:
@@ -25,3 +25,8 @@ class StockSearchForm(forms.ModelForm):
    class Meta:
      model = Stock
      fields = ['category', 'item_name']
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['name']

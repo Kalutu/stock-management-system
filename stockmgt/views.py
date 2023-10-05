@@ -66,3 +66,17 @@ def delete_item(request, id):
         messages.success(request, "Deleted Successfully")
         return redirect('stock:list')
     return render(request, 'stock/delete.html')
+
+@login_required(login_url=('/accounts/login'))
+def add_category(request):
+    form = CategoryForm()
+    context={
+        'form':form
+    }
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Category added Successfully")
+            return redirect('stock:add')
+    return render(request, 'stock/category.html', context)
