@@ -11,10 +11,8 @@
             </div>
             {% endfor %}
         </div> 
-        <input class="btn btn-success" type="submit" value="Add"> 
+        <input class="btn btn-success me-5" type="submit" value="Add Item"> 
+        <a class="btn btn-info" href="{% url 'stock:add_category' %}">Add Category</a>
     </form>
 
-    <footer>
-        <a class="btn btn-primary" href="{% url 'stock:add_category' %}">Add Catrgory</a>
-    </footer>
 {% endblock%}

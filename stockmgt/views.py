@@ -60,7 +60,7 @@ def update_item(request, id):
     form = StockCreateForm(instance=queryset)
 
     if request.method == 'POST':
-        form = StockCreateForm(request.POST,instance=queryset)
+        form = StockUpdateForm(request.POST,instance=queryset)
         if form.is_valid:
             form.save()
             messages.success(request, "Updated Successfully")
