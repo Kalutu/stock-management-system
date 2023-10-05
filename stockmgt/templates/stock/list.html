@@ -29,6 +29,7 @@
 				<th>Item</th>
 				<th>Category</th>
 				<th>Quantity</th>
+				<th>Action</th>
 			</thead>
 			<tbody>
 				{% for instance in queryset %}
@@ -37,6 +38,7 @@
 					<td><a href="{% url 'stock:update' id=instance.id %}">{{instance.item_name}}</a></td>
 					<td>{{instance.category}}</td>
 					<td>{{instance.quantity}}</td>
+					<td><a href="{% url 'stock:delete' id=instance.id %}">Delete</a></td>
 				</tr>
 				{% endfor %}
 			</tbody>

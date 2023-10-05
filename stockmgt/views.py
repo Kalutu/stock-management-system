@@ -57,3 +57,9 @@ def update_item(request, id):
         'form':form
     }  
     return render(request, 'stock/add.html', context)
+
+@login_required(login_url=('/accounts/login'))
+def delete_item(request, id):
+    queryset = Stock.objects.get(id=id)
+    queryset.delete()
+    return redirect('stock:list')

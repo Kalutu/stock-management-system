@@ -7,4 +7,5 @@ urlpatterns = [
     path('list/', list_items, name='list'),
     path('add/', add_items, name='add'),
     path('update/<int:id>/', update_item, name='update'),
+    path('update/<int:id>/delete/', delete_item, name='delete'),
 ]
