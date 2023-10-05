@@ -61,5 +61,8 @@ def update_item(request, id):
 @login_required(login_url=('/accounts/login'))
 def delete_item(request, id):
     queryset = Stock.objects.get(id=id)
-    queryset.delete()
-    return redirect('stock:list')
+    if request.method=='POST':
+        queryset.delete()
+        messages.success(request, "Deleted Successfully")
+        return redirect('stock:list')
+    return render(request, 'stock/delete.html')

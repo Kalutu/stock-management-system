@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block content %}
+  <form class="container mt-5" method="post" action="">
+      {% csrf_token %}
+        <h1>Are you sure?</h1><br>
+        <input class="btn btn-danger" type="submit" value="Delete" />
+        <a href="{% url 'stock:list'%}"><div class="btn btn-primary">Cancel</div></a>
+  </form>
+{% endblock%}
