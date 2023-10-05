@@ -2,6 +2,12 @@
 {% load bootstrap5 %}
 {% block content %}
 
+	{% if messages %}
+		{% for message in messages %}
+		 	<div class="text-center mt-3">{{ message }}</div>
+		{% endfor %}
+	{% endif %}
+
 	<div class="container">
 		<form class="mt-5" method="post" action="">
 			{% csrf_token %}
@@ -20,16 +26,16 @@
 		<table class="m-5">
 			<thead>
 				<th>#</th>
-				<th>Category</th>
 				<th>Item</th>
+				<th>Category</th>
 				<th>Quantity</th>
 			</thead>
 			<tbody>
 				{% for instance in queryset %}
 				<tr>
 					<td>{{forloop.counter}}</td>
+					<td><a href="{% url 'stock:update' id=instance.id %}">{{instance.item_name}}</a></td>
 					<td>{{instance.category}}</td>
-					<td>{{instance.item_name}}</td>
 					<td>{{instance.quantity}}</td>
 				</tr>
 				{% endfor %}

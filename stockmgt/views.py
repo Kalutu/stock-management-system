@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import *
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
@@ -39,3 +40,20 @@ def add_items(request):
         form = StockCreateForm()
     
     return render(request, 'stock/add.html', {'form': form})
+
+@login_required(login_url=('/accounts/login'))
+def update_item(request, id):
+    queryset = Stock.objects.get(id=id)
+    form = StockCreateForm(instance=queryset)
+
+    if request.method == 'POST':
+        form = StockCreateForm(request.POST,instance=queryset)
+        if form.is_valid:
+            form.save()
+            messages.success(request, "Updated Successfully")
+            return redirect('stock:list')
+
+    context = {
+        'form':form
+    }  
+    return render(request, 'stock/add.html', context)
