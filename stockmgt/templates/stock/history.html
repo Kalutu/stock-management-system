@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <table>
+            <thead>
+                <th>#</th>
+				<th>Item</th>
+				<th>Category</th>
+				<th>Quantity</th>
+				<th>Reoder Level</th>
+                <th>Issue Quantity</th>
+                <th>Receive Quantity</th>
+				<th>Timestamp</th>
+				<th>Last Updated</th>
+            </thead>
+            <tbody>
+                {% for instance in queryset %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ instance.id }}</td>
+                    <td>{{ instance.category }}</td>
+                    <td>{{ instance.item_name }}</td>
+                    <td>{{ instance.quantity }}</td>
+                    <td>{{ instance.issue_quantity }}</td>
+                    <td>{{ instance.receive_quantity }}</td>
+                    <td>{{ instance.last_updated }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    
+        </table>
+    </div>
+
+{% endblock %}

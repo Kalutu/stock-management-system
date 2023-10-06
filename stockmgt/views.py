@@ -161,3 +161,11 @@ def reorder_level(request, id):
 			"form": form,
 		}
     return render(request, "stock/add.html", context)
+
+@login_required(login_url=('/accounts/login'))
+def history(request):
+    queryset = StockHistory.objects.all()
+    context = {
+		"queryset": queryset,
+	}
+    return render(request, "stock/history.html",context)

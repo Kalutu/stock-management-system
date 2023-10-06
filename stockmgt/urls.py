@@ -13,4 +13,5 @@ urlpatterns = [
     path('issue/<str:id>/', issue_item, name="issue"),
     path('receive/<str:id>/', receive_item, name="receive"),
     path('reorder/<str:id>/', reorder_level, name="reorder"),
+    path('history/', history, name='history'),
 ]

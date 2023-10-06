@@ -4,7 +4,7 @@ from .models import *
 class StockCreateForm(forms.ModelForm):
     class Meta:
         model = Stock
-        fields = ['category', 'item_name', 'quantity']
+        fields = ['category', 'item_name', 'quantity', 'reorder_level']
         
     def clean_item_name(self):
           item_name = self.cleaned_data.get('item_name')
