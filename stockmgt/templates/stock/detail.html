@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% block content %}
+
+        <a href='{% url "stock:issue" id=queryset.id%}'><div class='btn btn-danger'>ISSUE THIS ITEM</div></a>
+        <a href='{% url "stock:receive" id=queryset.id%}'><div class='btn btn-primary'>RECEIVE THIS ITEM</div></a>
+        <br><br>
+        <div>
+          <table>
+                  <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Last Updated</th>
+                    <th>Reoder Level</th>
+                  </tr>
+                  <tr>
+                    <td>{{queryset.item_name}}</td>
+                    <td>{{queryset.quantity}}</td>
+                    <td>{{queryset.last_updated}}</td>
+                    <td>{{queryset.reorder_level}}</td>
+                  </tr>
+          </table>
+        </div>
+{% endblock %}

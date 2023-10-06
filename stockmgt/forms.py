@@ -47,3 +47,13 @@ class CategoryForm(forms.ModelForm):
     class Meta:
         model = Category
         fields = ['name']
+
+class IssueForm(forms.ModelForm):
+	class Meta:
+		model = Stock
+		fields = ['issue_quantity', 'issue_to']
+        
+class ReceiveForm(forms.ModelForm):
+	class Meta:
+		model = Stock
+		fields = ['receive_quantity', 'receive_by']

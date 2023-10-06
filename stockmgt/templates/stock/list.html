@@ -39,7 +39,7 @@
 					<td>{{forloop.counter}}</td>
 					<td><a href="{% url 'stock:update' id=instance.id %}">{{instance.item_name}}</a></td>
 					<td>{{instance.category}}</td>
-					<td>{{instance.quantity}}</td>
+					<td><a href="{% url 'stock:detail' id=instance.id %}">{{instance.quantity}}</a></td>
 					<td>{{instance.timestamp}}</td>
 					<td>{{instance.last_updated}}</td>
 					<td><a href="{% url 'stock:delete' id=instance.id %}"><i class="fas fa-trash" style="color: red;"></i></a></td>

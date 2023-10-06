@@ -93,3 +93,56 @@ def add_category(request):
             messages.success(request, "Category added Successfully")
             return redirect('stock:add')
     return render(request, 'stock/category.html', context)
+
+@login_required(login_url=('/accounts/login'))
+def stock_detail(request, id):
+    queryset = Stock.objects.get(id=id)
+    context={
+        'queryset': queryset,
+    }
+    return render(request, 'stock/detail.html', context)
+
+@login_required(login_url=('/accounts/login'))
+def issue_item(request, id):
+    instance = Stock.objects.get(id=id)
+    form = IssueForm()
+    context = {
+        'queryset': instance,
+        'form': form
+    }
+    
+    if request.method == 'POST':
+        form = IssueForm(request.POST)
+        if form.is_valid():
+            try:
+                issue_quantity = int(form.cleaned_data['issue_quantity'])
+                instance.quantity -= issue_quantity
+                instance.save()
+                return redirect('/stock/detail/' + str(instance.id))
+            except ValueError:
+                pass
+    return render(request, "stock/add.html", context)
+
+
+
+
+@login_required(login_url=('/accounts/login'))
+def receive_item(request, id):
+    instance = Stock.objects.get(id=id)
+    form = ReceiveForm()
+    context = {
+        'queryset': instance,
+        'form': form
+    }
+    
+    if request.method == 'POST':
+        form = ReceiveForm(request.POST)
+        if form.is_valid():
+            try:
+                receive_quantity = int(form.cleaned_data['receive_quantity'])
+                instance.quantity += receive_quantity
+                instance.save()
+                return redirect('/stock/detail/' + str(instance.id))
+            except ValueError:
+                pass
+    return render(request, "stock/add.html", context)
