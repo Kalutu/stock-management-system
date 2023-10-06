@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
-    <h1>Welcome to the home page</h1>
-
+    <div class="container mt-5">
+        <h1 class="text-center mb-5">Welcome to Stock Management System</h1>
+        <img class="img-fluid" src="{% static 'img/stock.jpg' %}" alt="stock">
+    </div>
+    
 {% endblock %}

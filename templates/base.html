@@ -11,33 +11,33 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         {% if user.is_authenticated %}
-        <ul class="navbar-nav">
+        <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">SMS v1.0.0</a>
+                <a class="nav-link" href="{% url 'home' %}"><img height="70px" src="{% static 'img/logo.png' %}" alt="logo"></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'home' %}">Home</a>
+                <a class="nav-link mt-5" href="{% url 'home' %}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'stock:list' %}">List</a>
+                <a class="nav-link mt-5" href="{% url 'stock:list' %}">List</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'stock:add' %}">Add</a>
+                <a class="nav-link mt-5" href="{% url 'stock:add' %}">Add</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'stock:add_category' %}">Add Category</a>
+                <a class="nav-link mt-5" href="{% url 'stock:add_category' %}">Add Category</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'stock:history' %}">History</a>
+                <a class="nav-link mt-5" href="{% url 'stock:history' %}">History</a>
              </li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <form method="post" action="{% url 'accounts:logout' %}">
                     {% csrf_token %}
-                    <button class="btn btn-danger" type="submit">Logout</button>
+                    <button class="btn btn-danger mt-5" type="submit">Logout</button>
                 </form>
             </li>
         </ul>
@@ -52,6 +52,7 @@
             </ul>
         {% endif %}
     </nav>
+    
 
     {% block content %}
     {% endblock %}
