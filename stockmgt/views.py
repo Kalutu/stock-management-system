@@ -146,3 +146,18 @@ def receive_item(request, id):
             except ValueError:
                 pass
     return render(request, "stock/add.html", context)
+
+@login_required(login_url=('/accounts/login'))
+def reorder_level(request, id):
+    queryset = Stock.objects.get(id=id)
+    form = ReorderLevelForm(request.POST or None, instance=queryset)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+        messages.success(request, "Reorder level for " + str(instance.item_name) + " is updated to " + str(instance.reorder_level))
+        return redirect("stock:list")
+    context = {
+			"instance": queryset,
+			"form": form,
+		}
+    return render(request, "stock/add.html", context)

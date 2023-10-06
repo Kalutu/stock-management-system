@@ -57,3 +57,8 @@ class ReceiveForm(forms.ModelForm):
 	class Meta:
 		model = Stock
 		fields = ['receive_quantity', 'receive_by']
+
+class ReorderLevelForm(forms.ModelForm):
+	class Meta:
+		model = Stock
+		fields = ['reorder_level']
