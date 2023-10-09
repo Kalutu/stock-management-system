@@ -6,6 +6,14 @@
 body{
     background-color: rgb(221, 255, 255);
 }
+.nav-item{
+  font-size: 22px;
+  margin-right: 25px;
+}
+
+.logout{
+  margin-right: 0px;
+}
 
 .title, .home{
   font-family: helvetica;
