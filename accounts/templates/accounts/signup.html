@@ -3,7 +3,7 @@
 {% block content %}
 
     <div class="container">
-        <h1 class="mt-5 mb-5">Sign Up</h1>
+        <h1 class="form title mt-5 mb-5">Sign Up</h1>
     
         <form action="/accounts/signup/" method="post">
             {% csrf_token %}
@@ -14,7 +14,7 @@
                 </div>
                 {% endfor %}
             </div>
-            <input class="btn btn-success" type="submit" value="Signup">
+            <input class="btn btn-info" type="submit" value="Signup">
         </form>
     </div>
     

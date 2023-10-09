@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <form class="container mt-5" method="post" action="">
+        {% csrf_token %}
+        <h1 class="form title">Are you sure you want to Log out?</h1>
+        <div class="row mt-3">
+            <div class="col-sm-3">
+                <input class="btn btn-danger" type="submit" value="Logout" />
+            </div>
+            <div class="col-sm-3">
+                <a href="{% url 'home'%}"><div class="btn btn-primary">Cancel</div></a>
+            </div>
+            <div class="col-sm-3"></div>
+            <div class="col-sm-3"></div>
+        </div>
+    </form>
+
+{% endblock%}
