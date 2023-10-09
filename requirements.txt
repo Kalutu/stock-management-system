@@ -20,3 +20,4 @@ soupsieve==2.5
 sqlparse==0.4.4
 tzdata==2023.3
 virtualenv==20.24.5
+whitenoise==6.5.0
