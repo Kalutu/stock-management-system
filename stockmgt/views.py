@@ -7,13 +7,18 @@ import csv
 
 # Create your views here.
 def home(request):
-    return render(request, 'stock/home.html')
+    context={
+        'title':"Welcome to Stock Management System"
+    }
+    return render(request, 'stock/home.html', context)
 
 @login_required(login_url=('/accounts/login'))
 def list_items(request):
+    title = "List of items"
     queryset = Stock.objects.all()
     form = StockSearchForm()
     context={
+        'title':title,
         'queryset':queryset,
         'form':form
     }
@@ -26,8 +31,9 @@ def list_items(request):
                 )
             
             context={
-                    'queryset':queryset,
-                    'form':form
+                'title':title,
+                'queryset':queryset,
+                'form':form
             }
 
             if form['export_to_CSV'].value() == True:
@@ -44,6 +50,7 @@ def list_items(request):
 
 @login_required(login_url=('/accounts/login'))
 def add_items(request):
+    title = "Add Items"
     if request.method == 'POST':
         form = StockCreateForm(request.POST)
         if form.is_valid():
@@ -52,7 +59,7 @@ def add_items(request):
     else:
         form = StockCreateForm()
     
-    return render(request, 'stock/add.html', {'form': form})
+    return render(request, 'stock/add.html', {'form': form, "title":title})
 
 @login_required(login_url=('/accounts/login'))
 def update_item(request, id):
@@ -82,8 +89,10 @@ def delete_item(request, id):
 
 @login_required(login_url=('/accounts/login'))
 def add_category(request):
+    title = "Add Category"
     form = CategoryForm()
     context={
+        'title': title,
         'form':form
     }
     if request.method == 'POST':
@@ -164,8 +173,10 @@ def reorder_level(request, id):
 
 @login_required(login_url=('/accounts/login'))
 def history(request):
+    title = 'Stock History'
     queryset = StockHistory.objects.all()
     context = {
+        "title": title,
 		"queryset": queryset,
 	}
     return render(request, "stock/history.html",context)

@@ -2,6 +2,10 @@
 {% load bootstrap5 %}
 {% block content %}
 
+    <div class="container mt-5">
+        <h1 class="form title mb-5">{{ title }}</h1>
+    </div>
+
     <form class="container mt-5" method="post" action="">
         {% csrf_token %}
         <div class="row">

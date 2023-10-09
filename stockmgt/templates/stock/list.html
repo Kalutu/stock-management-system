@@ -8,7 +8,9 @@
 		{% endfor %}
 	{% endif %}
 
-	<div class="container">
+	
+	<div class="container mt-5">
+		<h1 class="title mb-5">{{ title }}</h1>
 		<form class="mt-5" method="post" action="">
 			{% csrf_token %}
 			<div class="row">

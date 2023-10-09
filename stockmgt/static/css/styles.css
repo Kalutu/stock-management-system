@@ -7,6 +7,23 @@ body{
     background-color: rgb(221, 255, 255);
 }
 
+.title, .home{
+  font-family: helvetica;
+  font-weight: bold;
+  font-size: 30px;
+  color: #2e6da4;
+  text-align: center;
+}
+
+.form{
+  text-align: left;
+}
+
+.home{
+  font-size: 40px;
+  text-align: center;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -14,7 +31,7 @@ table {
   }
   
   th {
-    background-color: #8b9eea;
+    background-color: #70a3d0;
     text-align: left;
     padding: 10px;
     font-weight: bold;
