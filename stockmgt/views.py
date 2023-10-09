@@ -63,6 +63,7 @@ def add_items(request):
 
 @login_required(login_url=('/accounts/login'))
 def update_item(request, id):
+    title = "Edit Item"
     queryset = Stock.objects.get(id=id)
     form = StockCreateForm(instance=queryset)
 
@@ -74,6 +75,7 @@ def update_item(request, id):
             return redirect('stock:list')
 
     context = {
+        'title':title,
         'form':form
     }  
     return render(request, 'stock/add.html', context)
@@ -105,17 +107,21 @@ def add_category(request):
 
 @login_required(login_url=('/accounts/login'))
 def stock_detail(request, id):
+    title = "Stock Details"
     queryset = Stock.objects.get(id=id)
     context={
+        'title':title,
         'queryset': queryset,
     }
     return render(request, 'stock/detail.html', context)
 
 @login_required(login_url=('/accounts/login'))
 def issue_item(request, id):
+    title = "Issue Item"
     instance = Stock.objects.get(id=id)
     form = IssueForm()
     context = {
+        'title':title,
         'queryset': instance,
         'form': form
     }
@@ -137,9 +143,11 @@ def issue_item(request, id):
 
 @login_required(login_url=('/accounts/login'))
 def receive_item(request, id):
+    title = "Receive Item"
     instance = Stock.objects.get(id=id)
     form = ReceiveForm()
     context = {
+        'title':title,
         'queryset': instance,
         'form': form
     }
@@ -158,6 +166,7 @@ def receive_item(request, id):
 
 @login_required(login_url=('/accounts/login'))
 def reorder_level(request, id):
+    title = "Reoder Level"
     queryset = Stock.objects.get(id=id)
     form = ReorderLevelForm(request.POST or None, instance=queryset)
     if form.is_valid():
@@ -166,6 +175,7 @@ def reorder_level(request, id):
         messages.success(request, "Reorder level for " + str(instance.item_name) + " is updated to " + str(instance.reorder_level))
         return redirect("stock:list")
     context = {
+            'title':title,
 			"instance": queryset,
 			"form": form,
 		}
