@@ -18,10 +18,7 @@ The Stock Management System is a web-based application designed to help business
 4. Monitor stock levels and reorder alerts on the dashboard.
 
 ## Contributing
-If you would like to contribute to this project, please follow the guidelines in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Contributions are welcome! If you have any ideas, suggestions, or discover issues, please create a GitHub issue or fork the repository and submit a pull request.
 
 ## Acknowledgments
 - Thanks to the open-source community for providing essential tools and frameworks.
